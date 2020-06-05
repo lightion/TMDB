@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fragment_nav"
+    app:startDestination="@id/streaming">
+
+    <fragment
+        android:id="@+id/streaming"
+        android:name="tech.lightion.tmdb.ui.fragments.StreamingFragment"
+        android:label="fragment_streaming"
+        tools:layout="@layout/fragment_streaming" >
+        <action
+            android:id="@+id/action_streamingFragment_to_onTvFragment"
+            app:destination="@id/onTV" />
+        <action
+            android:id="@+id/action_streaming_to_movieDetailFragment2"
+            app:destination="@id/movieDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/onTV"
+        android:name="tech.lightion.tmdb.ui.fragments.OnTvFragment"
+        android:label="fragment_on_tv"
+        tools:layout="@layout/fragment_on_tv" >
+        <action
+            android:id="@+id/action_onTvFragment_to_rentFragment"
+            app:destination="@id/forRent" />
+    </fragment>
+    <fragment
+        android:id="@+id/forRent"
+        android:name="tech.lightion.tmdb.ui.fragments.RentFragment"
+        android:label="fragment_rent"
+        tools:layout="@layout/fragment_rent" >
+        <action
+            android:id="@+id/action_rentFragment_to_theaterFragment"
+            app:destination="@id/theaters" />
+    </fragment>
+    <fragment
+        android:id="@+id/theaters"
+        android:name="tech.lightion.tmdb.ui.fragments.TheaterFragment"
+        android:label="fragment_theater"
+        tools:layout="@layout/fragment_theater" />
+    <fragment
+        android:id="@+id/movieDetailFragment2"
+        android:name="tech.lightion.tmdb.ui.fragments.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movie"
+            app:argType="tech.lightion.tmdb.model.Movie" />
+    </fragment>
+</navigation>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TMDB</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transition_image">coffeeImageView%d</string>
+    <string name="transition_title">movieTextView%d</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+</resources>
