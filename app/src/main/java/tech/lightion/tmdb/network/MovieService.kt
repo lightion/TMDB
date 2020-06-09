@@ -3,6 +3,9 @@ package tech.lightion.tmdb.network
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * the following object used for fetching data from the tmdb using retrofit
+ */
 object MovieService {
 
     private val BASE_URL = "https://api.themoviedb.org"

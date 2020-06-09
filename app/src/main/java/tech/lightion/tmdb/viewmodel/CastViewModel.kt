@@ -7,6 +7,9 @@ import kotlinx.coroutines.*
 import tech.lightion.tmdb.model.Cast
 import tech.lightion.tmdb.network.MovieService
 
+/**
+ * ViewModel for the cast list
+ */
 class CastViewModel : ViewModel() {
     val itemList = MutableLiveData<ArrayList<Cast>>()
     val castService = MovieService.getCastService()

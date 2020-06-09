@@ -6,7 +6,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import tech.lightion.tmdb.model.Movie
 import tech.lightion.tmdb.ui.fragments.CastDetailFragment
 import tech.lightion.tmdb.ui.fragments.DescriptionDetailFragment
-
+/**
+ * Used for sliding tab present the MovieDetailFragment
+ */
 class MovieViewPagerFragmentAdapter(fragment: Fragment, val movie: Movie) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2
 

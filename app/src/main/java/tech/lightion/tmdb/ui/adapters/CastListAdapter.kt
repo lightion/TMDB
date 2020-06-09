@@ -7,6 +7,9 @@ import tech.lightion.tmdb.databinding.CardCastItemBinding
 import tech.lightion.tmdb.extensions.loadImage
 import tech.lightion.tmdb.model.Cast
 
+/**
+ * RecyclerView Adapter for the CastList
+ */
 class CastListAdapter(
     private val list: ArrayList<Cast>
 ) : RecyclerView.Adapter<CastListAdapter.CastListViewHolder>() {
@@ -30,6 +33,10 @@ class CastListAdapter(
         val cast = list[position]
         holder.bind(cast)
     }
+
+    /**
+     * CastListViewHolder to bind the data to the card_cast_item
+     */
 
     inner class CastListViewHolder (
         val binding: CardCastItemBinding

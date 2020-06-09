@@ -17,7 +17,7 @@ import tech.lightion.tmdb.ui.adapters.CastListAdapter
 import tech.lightion.tmdb.viewmodel.CastViewModel
 
 /**
- * A simple [Fragment] subclass.
+ * CastDetailFragment used to display the cast list present in the particular movie
  */
 class CastDetailFragment(val movie: Movie) : Fragment() {
 

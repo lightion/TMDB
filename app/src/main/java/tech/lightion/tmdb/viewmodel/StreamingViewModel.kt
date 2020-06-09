@@ -7,6 +7,10 @@ import kotlinx.coroutines.*
 import tech.lightion.tmdb.model.Movie
 import tech.lightion.tmdb.network.MovieService
 
+/**
+ * This ViewModel is used to fetch and display Movie List from the TMDB apis
+ */
+
 class StreamingViewModel : ViewModel() {
     val itemList = MutableLiveData<List<Movie>>()
     private val movieService = MovieService.getMovieService()

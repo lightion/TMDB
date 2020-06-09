@@ -18,7 +18,7 @@ import tech.lightion.tmdb.viewmodel.MainFragmentViewModel
 import tech.lightion.tmdb.viewmodel.StreamingViewModel
 
 /**
- * A simple [Fragment] subclass.
+ * A [Fragment] subclass to display the movie list fetched from the tmdb apis.
  */
 class StreamingFragment : Fragment() {
 

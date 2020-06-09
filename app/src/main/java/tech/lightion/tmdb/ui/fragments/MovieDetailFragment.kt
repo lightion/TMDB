@@ -19,7 +19,7 @@ import tech.lightion.tmdb.ui.adapters.MovieViewPagerFragmentAdapter
 import tech.lightion.tmdb.viewmodel.MainFragmentViewModel
 
 /**
- * A simple [Fragment] subclass.
+ * A [Fragment] subclass for the movie details.
  */
 class MovieDetailFragment : Fragment() {
 
