@@ -10,6 +10,8 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import tech.lightion.tmdb.extensions.allowLogin
+import tech.lightion.tmdb.extensions.equalUserName
 import tech.lightion.tmdb.model.User
 import tech.lightion.tmdb.model.database.RealmManager
 import tech.lightion.tmdb.model.database.UserRepo
@@ -23,9 +25,11 @@ class LoginViewModel : ViewModel() {
 
     val registerButton = SingleLiveEvent<Void>()
 
-    val canUserLogin = MutableLiveData<Boolean>(false)
+    val canUserLogin = MutableLiveData<Boolean>()
 
     val loginUserError = MutableLiveData<Boolean>(false)
+
+    val userAlreadyExistError = MutableLiveData<Boolean>(false)
 
     val userName = ObservableField("")
     val password = ObservableField<String>()
@@ -33,6 +37,7 @@ class LoginViewModel : ViewModel() {
     fun loginButtonClickEvent() {
         loginButton.call()
     }
+
     fun performLogin(name: String, pass: String) {
         canUserLogin.postValue(allowLogin(name, pass))
     }
@@ -41,11 +46,24 @@ class LoginViewModel : ViewModel() {
         registerButton.call()
     }
 
-    fun allowLogin(name: String, pass: String) : Boolean = name == "admin" && pass == "123"
+    fun allowLogin(name: String, pass: String): Boolean {
+        return if (userRepo.getUsers().isEmpty())
+            false
+        else {
+            userRepo.getUsers().allowLogin(User(name, pass))
+        }
+    }
 
     fun signUp(name: String, pass: String) {
         val user = User(name, pass)
-        userRepo.addUser(user)
+        if (checkUserExist(user)) {
+            userAlreadyExistError.value = true
+        } else {
+            userRepo.addUser(user)
+            userAlreadyExistError.value = false
+            Log.d("REALMCRUD", "${userRepo.getUsers()}")
+        }
+
 //        val userList = getUserData().value
 //        Log.d("REALMCRUD", "$userList")
 //        if(userList.isNullOrEmpty()) {
@@ -68,9 +86,16 @@ class LoginViewModel : ViewModel() {
 //        }
     }
 
-    private fun getUserData(): LiveData<List<User>> {
-        return Transformations.map(userRepo.getUsers()) {
-            it
+    private fun checkUserExist(user: User): Boolean {
+        return if (userRepo.getUsers().isEmpty())
+            false
+        else {
+            userRepo.getUsers().equalUserName(user)
         }
     }
+//    private fun getUserData(): LiveData<List<User>> {
+//        return Transformations.map(userRepo.getUsers()) {
+//            it
+//        }
+//    }
 }

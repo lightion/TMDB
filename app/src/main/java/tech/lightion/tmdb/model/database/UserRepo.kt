@@ -10,7 +10,7 @@ class UserRepo() {
         RealmManager.add(user)
     }
 
-    fun getUsers() : LiveData<List<User>> {
-        return RealmManager.findAll<User>().asLiveData()
+    fun getUsers() : List<User>{
+        return RealmManager.findAll()
     }
 }

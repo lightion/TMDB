@@ -9,21 +9,22 @@ import tech.lightion.tmdb.network.MovieService
 
 class StreamingViewModel : ViewModel() {
     val itemList = MutableLiveData<List<Movie>>()
-    val movieService = MovieService.getMovieService()
+    private val movieService = MovieService.getMovieService()
     var job: Job? = null
-
+    val loading = MutableLiveData<Boolean>()
 
 
     fun setListData() {
-
+        loading.value = true
         job = CoroutineScope(Dispatchers.IO).launch {
 
             val response = movieService.getMovies(1)
 
             withContext(Dispatchers.Main) {
-                if (response.isSuccessful)
+                if (response.isSuccessful) {
                     itemList.value = response.body()?.list
-                else
+                    loading.value = false
+                } else
                     Log.d("RETROTEST", "${response.message()}")
             }
         }
