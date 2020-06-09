@@ -7,7 +7,7 @@ object RealmManager {
     fun <T : RealmObject> add(model: T) {
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction {
-            it.insertOrUpdate(model)
+            it.insert(model)
         }
         realm.close()
     }
@@ -16,8 +16,7 @@ object RealmManager {
         val realm = Realm.getDefaultInstance()
         val list = realm.copyFromRealm(
             realm.where(T::class.java)
-                .findAll()
-        )
+                .findAll())
         realm.close()
         return list
     }

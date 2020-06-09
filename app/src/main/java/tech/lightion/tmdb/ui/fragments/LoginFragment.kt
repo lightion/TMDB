@@ -80,8 +80,8 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context, "User Can Login", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
             } else {
-                viewModel.loginUserError.value = binding.loginButton.isEnabled
-
+                binding.loginUserNameInputLayout.error = "Incorrect Username"
+                binding.loginUserName.error = ""
             }
         })
         viewModel.loginUserError.observe(requireActivity(), Observer {
@@ -90,8 +90,12 @@ class LoginFragment : Fragment() {
             }
         })
         viewModel.registerButton.observe(requireActivity(), Observer {
-            Toast.makeText(context, "Register Button Clicked", Toast.LENGTH_SHORT).show()
             viewModel.signUp(binding.registerUserName.text.toString(), binding.registerPassword.text.toString())
+        })
+        viewModel.userAlreadyExistError.observe(requireActivity(), Observer {
+            if(it){
+                binding.registerUserNameInputLayout.error = "User already Exists"
+            }
         })
     }
 
