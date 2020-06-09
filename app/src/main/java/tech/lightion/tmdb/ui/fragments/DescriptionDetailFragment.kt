@@ -5,20 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 
 import tech.lightion.tmdb.R
+import tech.lightion.tmdb.databinding.FragmentDescriptionDetailBinding
+import tech.lightion.tmdb.model.Movie
 
 /**
  * A simple [Fragment] subclass.
  */
-class DescriptionDetailFragment : Fragment() {
+class DescriptionDetailFragment(val movie: Movie) : Fragment() {
+
+    lateinit var binding: FragmentDescriptionDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_description_detail, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_description_detail,
+            container,
+            false
+        )
+        binding.movie = movie
+        return binding.root
     }
 
 }

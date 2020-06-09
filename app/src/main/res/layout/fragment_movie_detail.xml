@@ -82,6 +82,7 @@
 
 
                 <com.google.android.material.tabs.TabLayout
+                    android:overScrollMode="never"
                     android:id="@+id/detailTabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

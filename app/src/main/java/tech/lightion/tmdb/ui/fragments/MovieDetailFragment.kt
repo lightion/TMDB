@@ -56,7 +56,7 @@ class MovieDetailFragment : Fragment() {
         binding.movieCardImageView.loadImage(args.movie.imageUrl)
         binding.executePendingBindings()
         adapter =
-            MovieViewPagerFragmentAdapter(this)
+            MovieViewPagerFragmentAdapter(this, args.movie)
         binding.detailMovieViewPager.adapter = adapter
 
         TabLayoutMediator(binding.detailTabLayout, binding.detailMovieViewPager) { tab, position ->

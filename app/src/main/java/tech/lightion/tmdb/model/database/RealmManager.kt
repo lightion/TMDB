@@ -2,19 +2,23 @@ package tech.lightion.tmdb.model.database
 
 import io.realm.Realm
 import io.realm.RealmObject
-import tech.lightion.tmdb.model.User
 
-class RealmManager {
+object RealmManager {
     fun <T : RealmObject> add(model: T) {
         val realm = Realm.getDefaultInstance()
-        realm.executeTransaction{
+        realm.executeTransaction {
             it.insertOrUpdate(model)
         }
         realm.close()
     }
 
-//    fun find(user: User) {
-//        val realm = Realm.getDefaultInstance()
-//        val checkUser = realm.where(User.class).equalTo()
-//    }
+    inline fun <reified T : RealmObject> findAll(): List<T> {
+        val realm = Realm.getDefaultInstance()
+        val list = realm.copyFromRealm(
+            realm.where(T::class.java)
+                .findAll()
+        )
+        realm.close()
+        return list
+    }
 }

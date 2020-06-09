@@ -91,6 +91,7 @@ class LoginFragment : Fragment() {
         })
         viewModel.registerButton.observe(requireActivity(), Observer {
             Toast.makeText(context, "Register Button Clicked", Toast.LENGTH_SHORT).show()
+            viewModel.signUp(binding.registerUserName.text.toString(), binding.registerPassword.text.toString())
         })
     }
 
