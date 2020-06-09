@@ -63,5 +63,11 @@ class StreamingFragment : Fragment() {
             val adapter = MovieListAdapter(it)
             binding.adapter = adapter
         })
+        viewModel.loading.observe(requireActivity(), Observer {
+            if(it) {
+                binding.streamingProgressBar.visibility = View.VISIBLE
+            } else
+                binding.streamingProgressBar.visibility = View.GONE
+        })
     }
 }
