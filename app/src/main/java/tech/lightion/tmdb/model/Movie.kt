@@ -4,6 +4,10 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Model class for the Movie
+ */
+
 @Parcelize
 data class Movie (
     @SerializedName("id")

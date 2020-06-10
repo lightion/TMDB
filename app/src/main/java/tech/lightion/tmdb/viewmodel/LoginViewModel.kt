@@ -17,6 +17,9 @@ import tech.lightion.tmdb.model.database.RealmManager
 import tech.lightion.tmdb.model.database.UserRepo
 import tech.lightion.tmdb.utility.SingleLiveEvent
 
+/**
+ * LoginViewModel used for authentication and for storing and fetching user from the Realm Database
+ */
 class LoginViewModel : ViewModel() {
 
     val userRepo = UserRepo()
@@ -63,27 +66,6 @@ class LoginViewModel : ViewModel() {
             userAlreadyExistError.value = false
             Log.d("REALMCRUD", "${userRepo.getUsers()}")
         }
-
-//        val userList = getUserData().value
-//        Log.d("REALMCRUD", "$userList")
-//        if(userList.isNullOrEmpty()) {
-//            userRepo.addUser(user)
-//            Log.d("REALMCRUD", "Added the first user")
-//        } else {
-//            userList.let {
-//                var userExist = false
-//                it.forEach { existingUser ->
-//                    if (existingUser.userName == user.userName)
-//                        userExist = true
-//                }
-//                if (userExist)
-//                    loginUserError.value = true
-//                else {
-//                    userRepo.addUser(user)
-//                    Log.d("REALMCRUD", "Added the new user")
-//                }
-//            }
-//        }
     }
 
     private fun checkUserExist(user: User): Boolean {
@@ -93,9 +75,4 @@ class LoginViewModel : ViewModel() {
             userRepo.getUsers().equalUserName(user)
         }
     }
-//    private fun getUserData(): LiveData<List<User>> {
-//        return Transformations.map(userRepo.getUsers()) {
-//            it
-//        }
-//    }
 }

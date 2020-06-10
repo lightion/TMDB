@@ -2,6 +2,11 @@ package tech.lightion.tmdb.extensions
 
 import tech.lightion.tmdb.model.User
 
+/**
+ * Extension equalUserName to check if the given user name exist in the database or not
+ * Extension allowLogin to check if the given user exist in the database
+ */
+
 fun List<User>.equalUserName(user: User) : Boolean {
     this.forEach {
         if(it.userName.equals(user.userName))

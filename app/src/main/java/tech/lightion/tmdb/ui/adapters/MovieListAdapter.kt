@@ -11,6 +11,9 @@ import tech.lightion.tmdb.extensions.toTransitionGroup
 import tech.lightion.tmdb.model.Movie
 import tech.lightion.tmdb.ui.fragments.StreamingFragmentDirections
 
+/**
+ * RecyclerView Adapter for the MovieList present in the StreamingFragment
+ */
 class MovieListAdapter (
     private val movieList: List<Movie>
 ) : RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>()

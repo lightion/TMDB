@@ -12,7 +12,7 @@ import tech.lightion.tmdb.databinding.FragmentDescriptionDetailBinding
 import tech.lightion.tmdb.model.Movie
 
 /**
- * A simple [Fragment] subclass.
+ *  A [Fragment] subclass used to display the description of the movie.
  */
 class DescriptionDetailFragment(val movie: Movie) : Fragment() {
 

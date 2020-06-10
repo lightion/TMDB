@@ -21,7 +21,7 @@ import tech.lightion.tmdb.databinding.FragmentLoginBinding
 import tech.lightion.tmdb.viewmodel.LoginViewModel
 
 /**
- * A simple [Fragment] subclass.
+ * A [Fragment] subclass used for the authentication including user login and user sign up
  */
 class LoginFragment : Fragment() {
 

@@ -20,7 +20,7 @@ import tech.lightion.tmdb.databinding.FragmentMainBinding
 import tech.lightion.tmdb.viewmodel.MainFragmentViewModel
 
 /**
- * A simple [Fragment] subclass.
+ * A [Fragment] subclass used as nav host to hold child fragments.
  */
 class MainFragment : Fragment() {
 
